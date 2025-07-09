@@ -66,6 +66,10 @@ Rails.application.routes.draw do
     constraints api_domain_constraint do
       namespace :v1 do
         resources :user_leads, only: :create
+        resources :companies, only: [] do
+          resources :dividends, only: [:index, :show]
+          resources :dividend_rounds, only: [:index, :show]
+        end
       end
       namespace :helper do
         resource :users, only: :show
